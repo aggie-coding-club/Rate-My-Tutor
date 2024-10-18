@@ -5,11 +5,29 @@ async function listDatabases(client){
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
+async function createDatabase(client, toInsert){
+    const result = await client.db("rate_my_tutor").collection("users").insertOne(toInsert)
+    console.log(`New listing created with the following id: ${result.insertedId}`)
+}
+
+async function getDatabase(client, user){
+    await client.db("rate_my_tutor").collection("users").findOne({username: user});
+}
+
+async function updateDatabase(client, user){
+    const result = await client.db("rate_my_tutor").collection("users").findOne({username: user});
+    console.log(result);
+}
+
+async function deleteDatabase(client, user){
+    const result = await client.db("rate_my_tutor").collection("users").deleteOne({username: user});
+    console.log(result);
+}
 async function main(){
     /**
      * Connection URI
      */
-    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/?retryWrites=true&w=majority&appName=users";
+    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
     const { MongoClient } = require('mongodb');
     const client = new MongoClient(uri);
 
@@ -18,13 +36,19 @@ async function main(){
         await client.connect();
 
         // Make the appropriate DB calls
-        await  listDatabases(client);
-
+        //createDatabase(client, {username: "master yi", password: "iloveratemytut", email: "lichengtx@gmail.com"})
+        getDatabase(client, "master yi")
+        //deleteDatabase(client, "master yi")
+        //deleteDatabase(client, "master yi")
+        //await  listDatabases(client);
     } catch (e) {
+        await client.close();
         console.error(e);
     } finally {
         await client.close();
     }
 }
+
+
 
 main().catch(console.error);

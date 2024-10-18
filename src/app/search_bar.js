@@ -14,8 +14,8 @@ async function getDatabase(client, user){
     await client.db("rate_my_tutor").collection("users").findOne({username: user});
 }
 
-async function updateDatabase(client, user){
-    const result = await client.db("rate_my_tutor").collection("users").findOne({username: user});
+async function updateDatabase(client, user, newName){
+    const result = await client.db("rate_my_tutor").collection("users").updateOne({username: user}, {$set: newName});
     console.log(result);
 }
 
@@ -37,12 +37,10 @@ async function main(){
 
         // Make the appropriate DB calls
         //createDatabase(client, {username: "master yi", password: "iloveratemytut", email: "lichengtx@gmail.com"})
-        getDatabase(client, "master yi")
-        //deleteDatabase(client, "master yi")
-        //deleteDatabase(client, "master yi")
-        //await  listDatabases(client);
+        await listDatabases(client);
+        await updateDatabase(client, "master yi", {username: "newpassword", password: "mynewpass"});
+        await listDatabases(client);
     } catch (e) {
-        await client.close();
         console.error(e);
     } finally {
         await client.close();

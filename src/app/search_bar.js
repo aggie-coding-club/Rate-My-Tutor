@@ -1,6 +1,7 @@
+const { toUSVString } = require('util');
+
 async function listDatabases(client){
     databasesList = await client.db().admin().listDatabases();
-
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
@@ -11,7 +12,8 @@ async function createDatabase(client, toInsert){
 }
 
 async function getDatabase(client, user){
-    await client.db("rate_my_tutor").collection("users").findOne({username: user});
+    const to_return = await client.db("rate_my_tutor").collection("users").findOne({username: user});
+    return to_return;
 }
 
 async function updateDatabase(client, user, newName){
@@ -24,12 +26,17 @@ async function deleteDatabase(client, user){
     console.log(result);
 }
 async function main(){
+
     /**
      * Connection URI
      */
     const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
     const { MongoClient } = require('mongodb');
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri);  
+
+    
+    const express = require('express');
+    const app = express();
 
     
 
@@ -39,10 +46,20 @@ async function main(){
         await client.connect();
 
         // Make the appropriate DB calls
-        //createDatabase(client, {username: "master yi", password: "iloveratemytut", email: "lichengtx@gmail.com"})
-        await listDatabases(client);
-        await updateDatabase(client, "master yi", {username: "newpassword", password: "mynewpass"});
-        await listDatabases(client);
+        //await createDatabase(client, {username: "freakbob", password: "babyoil17000", email: "pickupdaphonebaby@yahoo.com"})
+        //await updateDatabase(client, "newpassword", {username: "shlopenheimer", password: "myundies"});
+        //await listDatabases(client);
+        await app.listen(2000, function() {  console.log('listening on 2000')})
+        await app.get('/', async function(req, res) {
+            const client = new MongoClient(uri);  
+            //const results = await client.db("rate_my_tutor").collection("users").find({}).toArray();
+            const results = await deleteDatabase(client, "freakbob");
+            // const formattedResults = results.map(result => ({
+            //     _id: result._id,
+            //     username: result.username
+            // }));
+            res.json(results);
+        })// Note: request and response are usually written as req and res respectively.
     } catch (e) {
         console.error(e);
     } finally {

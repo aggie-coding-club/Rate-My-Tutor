@@ -29,13 +29,7 @@ export default function Home() {
           method: 'POST',
           body: JSON.stringify({ searchText }),
         }).then((res) => res.json()).then((data) => console.log(data));
-
-        // if (response.ok) {
-        //   // Navigate to the search results page
-        //   router.push(`/search?query=${encodeURIComponent(searchText)}`);
-        // } else {
-        //   console.error('Failed to post search term:', response.statusText);
-        // }
+        
       } catch (error) {
         console.error('Error posting search term:', error);
       }

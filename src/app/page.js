@@ -22,25 +22,23 @@ export default function Home() {
   const handleEnter= async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault();  // Prevents form submission refresh
+      console.log(JSON.stringify({searchText}))
 
       try {
         const response = await fetch('http://localhost:2000/search', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },  
-          body: JSON.stringify({ searchText }),  // Send search term in request body
+          body: JSON.stringify({ searchText }),
         });
 
         // if (response.ok) {
         //   // Navigate to the search results page
         //   router.push(`/search?query=${encodeURIComponent(searchText)}`);
-        // } else {
-        //   console.error('Failed to post search term:', response.statusText);
-        // }
 
         const data = await response.json();
         console.log(data);
+        // } else {
+        //   console.error('Failed to post search term:', response.statusText);
+        // }
       } catch (error) {
         console.error('Error posting search term:', error);
       }
@@ -84,8 +82,8 @@ export default function Home() {
           <div>
             <div className={styles.searchSection}>
               <h1 className={styles.helpComments} >Enter your Tutor's name to get started.</h1>
-              <form>
-                <input className={styles.searchbar} name="searchbar" type="text" placeholder="Search" onChange={handleChange}></input>
+              <form >
+                <input className={styles.searchbar} name="searchbar" type="text" value={searchText} placeholder="Search" onKeyDown={handleEnter} onChange={handleChange}></input>
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>

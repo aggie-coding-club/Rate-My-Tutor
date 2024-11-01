@@ -37,7 +37,6 @@
     height: 100%;
     background-image: url(/assets/RMT.png);
     background-size: cover;
-    
 }
 
 .searchSection {
@@ -75,6 +74,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     align-content: center;
+    gap: 20px;
 }
 .copyright {
     color: white;

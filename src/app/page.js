@@ -19,17 +19,32 @@ export default function Home() {
   const [searchText, setSearchText] = useState('')
   const router = useRouter();
 
-  const handleEnter = async (e) => {
-    if (e.key == "Enter") {
-      e.preventDefault();
+  const handleEnter= async (e) => {
+    if (e.key === 'Enter' && searchText.trim()) {
+      e.preventDefault();  // Prevents form submission refresh
+
       try {
-        await axios.post('/api/search', { query: searchText });
-        router.push(`/search?query=${encodeURIComponent(searchText)}`);
+        const response = await fetch('/search_bar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },  
+          body: JSON.stringify({ query: searchText }),  // Send search term in request body
+        });
+
+        if (response.ok) {
+          // Navigate to the search results page
+          router.push(`/search?query=${encodeURIComponent(searchText)}`);
+        } else {
+          console.error('Failed to post search term:', response.statusText);
+        }
       } catch (error) {
         console.error('Error posting search term:', error);
       }
     }
-    }
+  };
+
+
   const handleChange  = (e) => {
     setSearchText(e.target.value)
   }

@@ -23,8 +23,8 @@ export default function Home() {
     if (e.key == "Enter") {
       e.preventDefault();
       try {
-        await axios.post('/api/search', { query: searchTerm });
-        router.push(`/search?query=${encodeURIComponent(searchTerm)}`);
+        await axios.post('/api/search', { query: searchText });
+        router.push(`/search?query=${encodeURIComponent(searchText)}`);
       } catch (error) {
         console.error('Error posting search term:', error);
       }

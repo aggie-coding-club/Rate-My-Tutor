@@ -45,7 +45,7 @@ async function main(){
         // Connect to the MongoDB cluster
         await client.connect();
         await app.listen(2000, function() {  console.log('listening on 2000')})
-        await app.get('/', async function(req, res) { // use.toArray() if you want to display collection
+        await app.get('/search', async function(req, res) { // use.toArray() if you want to display collection
             const client = new MongoClient(uri);  
             
         })// Note: request and response are usually written as req and res respectively.

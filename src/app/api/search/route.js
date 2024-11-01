@@ -14,8 +14,8 @@ async function createDatabase(client, toInsert){ // ex: createDatabase(client, {
 }
 
 async function getDatabase(client, user){
-    const to_return = await client.db("rate_my_tutor").collection("users").findOne({username: user});
-    return to_return;
+    const to_return = await client.db("rate_my_tutor").collection("users").find({username: user});
+    return to_return.toArray();
 }
 
 async function updateDatabase(client, user, newName){ 
@@ -35,7 +35,8 @@ export async function POST(req) {
     const stringData = data.searchText;
 
     //connect to mongo
-    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
+    // const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
+    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/?retryWrites=true&w=majority&appName=users";
     const { MongoClient } = require('mongodb');
     const client = new MongoClient(uri);  
 

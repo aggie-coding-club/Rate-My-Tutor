@@ -32,7 +32,7 @@ export async function POST(req) {
     //input data
     const data = await req.json();
 
-    const stringData = JSON.stringify(data);
+    const stringData = data.searchText;
 
     //connect to mongo
     const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
@@ -47,6 +47,7 @@ export async function POST(req) {
 
     //query the database
     const document = await getDatabase(client, stringData);
+    await client.close();
 
     return NextResponse.json({document}, { status: 200 });
 }

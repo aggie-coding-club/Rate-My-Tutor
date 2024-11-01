@@ -24,20 +24,23 @@ export default function Home() {
       e.preventDefault();  // Prevents form submission refresh
 
       try {
-        const response = await fetch('/search_bar', {
+        const response = await fetch('http://localhost:2000/search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },  
-          body: JSON.stringify({ query: searchText }),  // Send search term in request body
+          body: JSON.stringify({ searchText }),  // Send search term in request body
         });
 
-        if (response.ok) {
-          // Navigate to the search results page
-          router.push(`/search?query=${encodeURIComponent(searchText)}`);
-        } else {
-          console.error('Failed to post search term:', response.statusText);
-        }
+        // if (response.ok) {
+        //   // Navigate to the search results page
+        //   router.push(`/search?query=${encodeURIComponent(searchText)}`);
+        // } else {
+        //   console.error('Failed to post search term:', response.statusText);
+        // }
+
+        const data = await response.json();
+        console.log(data);
       } catch (error) {
         console.error('Error posting search term:', error);
       }

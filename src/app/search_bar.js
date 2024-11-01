@@ -38,6 +38,10 @@ async function main(){
     const express = require('express');
     const app = express();
 
+    //test lines
+    const bodyParser = require('body-parser');
+    app.use(bodyParser.json());
+
     
 
 
@@ -45,10 +49,28 @@ async function main(){
         // Connect to the MongoDB cluster
         await client.connect();
         await app.listen(2000, function() {  console.log('listening on 2000')})
-        await app.get('/search', async function(req, res) { // use.toArray() if you want to display collection
-            const client = new MongoClient(uri);  
+        await app.get('/', async function(req, res) { // use.toArray() if you want to display collection
+            const client = new MongoClient(uri);
+            const professorName = req.query.searchbar;
+
+            const found = getDatabase(client, professorName);
+            console.log(professorName);
+            res.send(professorName);
             
         })// Note: request and response are usually written as req and res respectively.
+
+        // Endpoint to receive search query data
+
+        //test app.post
+        await app.post('/search', (req, res) => {
+            const searchQuery = req.body.searchbar;
+            console.log('Received search query:', searchQuery);
+
+            // Here, you can process the search query or return a response
+            res.json({ message: `You searched for: ${searchQuery}` });
+        });
+
+
     } catch (e) {
         console.error(e);
     } finally {

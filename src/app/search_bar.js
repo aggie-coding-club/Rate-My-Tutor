@@ -6,7 +6,7 @@ async function listDatabases(client){
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-async function createDatabase(client, toInsert){
+async function createDatabase(client, toInsert){ // ex: createDatabase(client, {username: "freakbob", password: "babyoil17000", email: "pickupdaphonebaby@yahoo.com"})
     const result = await client.db("rate_my_tutor").collection("users").insertOne(toInsert)
     console.log(`New listing created with the following id: ${result.insertedId}`)
 }
@@ -16,12 +16,12 @@ async function getDatabase(client, user){
     return to_return;
 }
 
-async function updateDatabase(client, user, newName){
+async function updateDatabase(client, user, newName){ 
     const result = await client.db("rate_my_tutor").collection("users").updateOne({username: user}, {$set: newName});
     console.log(result);
 }
 
-async function deleteDatabase(client, user){
+async function deleteDatabase(client, user){ // ex: deleteDatabase(client, "freakbob");
     const result = await client.db("rate_my_tutor").collection("users").deleteOne({username: user});
     console.log(result);
 }
@@ -44,21 +44,10 @@ async function main(){
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
-        // Make the appropriate DB calls
-        //await createDatabase(client, {username: "freakbob", password: "babyoil17000", email: "pickupdaphonebaby@yahoo.com"})
-        //await updateDatabase(client, "newpassword", {username: "shlopenheimer", password: "myundies"});
-        //await listDatabases(client);
         await app.listen(2000, function() {  console.log('listening on 2000')})
-        await app.get('/', async function(req, res) {
+        await app.get('/', async function(req, res) { // use.toArray() if you want to display collection
             const client = new MongoClient(uri);  
-            //const results = await client.db("rate_my_tutor").collection("users").find({}).toArray();
-            const results = await deleteDatabase(client, "freakbob");
-            // const formattedResults = results.map(result => ({
-            //     _id: result._id,
-            //     username: result.username
-            // }));
-            res.json(results);
+            
         })// Note: request and response are usually written as req and res respectively.
     } catch (e) {
         console.error(e);

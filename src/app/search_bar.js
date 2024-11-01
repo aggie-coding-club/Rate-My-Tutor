@@ -62,12 +62,12 @@ async function main(){
         // Endpoint to receive search query data
 
         //test app.post
-        await app.post('/search', (req, res) => {
+        await app.get('/search', (req, res) => {
             const searchQuery = req.body.searchbar;
             console.log('Received search query:', searchQuery);
 
             // Here, you can process the search query or return a response
-            res.json({ message: `You searched for: ${searchQuery}` });
+            res.send(searchQuery);
         });
 
 

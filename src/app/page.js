@@ -25,7 +25,7 @@ export default function Home() {
       console.log(JSON.stringify({searchText}))
 
       try {
-        const response = await fetch('http://localhost:2000/search', {
+        const response = await fetch('api/search', {
           method: 'POST',
           body: JSON.stringify({ searchText }),
         });

@@ -28,14 +28,11 @@ export default function Home() {
         const response = await fetch('api/search', {
           method: 'POST',
           body: JSON.stringify({ searchText }),
-        });
+        }).then((res) => res.json()).then((data) => console.log(data));
 
         // if (response.ok) {
         //   // Navigate to the search results page
         //   router.push(`/search?query=${encodeURIComponent(searchText)}`);
-
-        const data = await response.json();
-        console.log(data);
         // } else {
         //   console.error('Failed to post search term:', response.statusText);
         // }

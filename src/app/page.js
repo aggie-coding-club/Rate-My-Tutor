@@ -61,9 +61,7 @@ export default function Home() {
           {/* navbar */}
           <div className={styles.navbar}>
             {/* image */}
-            <div className= {styles.logo}>
-              Image goes here
-            </div>
+            <div className= {styles.logo}></div>
             {/* for buttons */}
             <div className={styles.buttonContainer}>
               <button className={styles.buttons}>
@@ -92,8 +90,36 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
 
+        {/* Bottom page/footer for once the user scrolls all the way down */}
+        <div className={styles.footer}>
+          {/* image logo */}
+          <div className={styles.logo}></div>
+          {/* for social icons */}
+          <div className={styles.socials}>
+            
+            {/* instagram */}
+            <a href="https://www.youtube.com/watch?v=At8v_Yc044Y" target="_blank" rel="noreferrer">
+              <button className={styles.instagram}></button>
+            </a>
+            {/* X or twitter */}
+            <a href="https://www.youtube.com/watch?v=At8v_Yc044Y" target="_blank" rel="noreferrer">
+              <button className={styles.tiktok}></button>
+            </a>
+            {/* test */}
+            <a href="https://www.youtube.com/watch?v=At8v_Yc044Y" target="_blank" rel="noreferrer">
+              <button className={styles.tiktok}></button>
+            </a>
+            {/* test */}
+            <a href="https://www.youtube.com/watch?v=At8v_Yc044Y" target="_blank" rel="noreferrer">
+              <button className={styles.tiktok}></button>
+            </a>
+          </div>
+          <div className={styles.copyright}>
+            <h1>&copy; 2024 Rate My Tutor, ACC Project</h1>
+          </div>
+
+        </div>
 
       </div>
     </div>

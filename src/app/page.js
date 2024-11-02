@@ -16,32 +16,37 @@ const background = {
 
 
 export default function Home() {
-  const [searchText, setSearchText] = useState('')
+  const [searchText, setSearchText] = useState('');
   const router = useRouter();
 
-  const handleEnter= async (e) => {
+  const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
-      e.preventDefault();  // Prevents form submission refresh
-      console.log(JSON.stringify({searchText}))
+      e.preventDefault(); // Prevents form submission refresh
+      // console.log(JSON.stringify({ searchText }));
 
       try {
-        const response = await fetch('api/search', {
+        const response = await fetch('/api/search', {
           method: 'POST',
-          body: JSON.stringify({ searchText }),
-        }).then((res) => res.json()).then((data) => console.log(data));
-        
+          body: JSON.stringify({ searchText }), // Only send the necessary data
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Store data in sessionStorage instead of passing it via URL
+          sessionStorage.setItem('searchResult', JSON.stringify(data));
+          router.push('/results'); // Navigate to results without passing data in the URL
+        } else {
+          console.error('Failed to post search term:', response.statusText);
+        }
       } catch (error) {
         console.error('Error posting search term:', error);
       }
     }
   };
 
-
-  const handleChange  = (e) => {
-    setSearchText(e.target.value)
-  }
-
-
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+  };
 
   return (
     <div style={background}>
@@ -52,7 +57,7 @@ export default function Home() {
           {/* navbar */}
           <div className={styles.navbar}>
             {/* image */}
-            <div className= {styles.logo}></div>
+            <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
             <div className={styles.buttonContainer}>
               <button className={styles.buttons}>

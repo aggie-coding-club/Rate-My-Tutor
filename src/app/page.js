@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
-import styles from './css/home.module.css';
-import RMT from './assets/RMT.png'
+import styles from './client/css/home.module.css';
+import RMT from './client/Assets/RMT.png'
 import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';

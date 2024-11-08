@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import aboutImg from './assets/aboutImage.png';
 
 const background = {
   background: "white",
@@ -13,7 +14,11 @@ const background = {
   width: '100vw'
 }
 
-
+const reviews = [
+  { name: 'Kevin Chen', review: 'I love the PTs so much, especially Licheng Yi ;)', stars: '★★★★★'},
+  { name: 'Licheng Yi', review: 'I\'m one of the PTs for Rate my Tutor and I got to meet up so many wonderful students like Kevin Chen :3', stars: '★★★★★'},
+  { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'}
+]
 
 export default function Home() {
   const [searchText, setSearchText] = useState('');
@@ -85,6 +90,46 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className={styles.aboutSection}>
+          <div className={styles.aboutContent}>
+            <h2>Our Mission</h2>
+            <p>
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Id ad pellentesque ultricies hendrerit venenatis fermentum. 
+              Phasellus facilisi pharetra etiam pharetra etiam tellus sociosqu placerat. Aliquet sed tempor gravida sodales facilisis purus non. 
+              Proin varius ante, nullam metus risus dolor. Arcu ultricies sed ad lorem ullamcorper; adipiscing porta.
+            </p>
+          </div>
+          <div className={styles.aboutImage}>
+            {/*<img src="/src/app/Assets/aboutImage.png" alt="Person reviewing"/>*/}
+            Image here
+          </div>
+        </div>
+
+        <div className={styles.reviewSection} style={{padding: '2rem 0', backgroundColor: '#e83c3c', textAlign: 'center'}}>
+          <h2>What do people think of us?</h2>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem',
+          }}>
+            {/* add feature for carousel effect for reviews*/}
+            <div className={styles.reviewTrack}>
+              {reviews.map((review, index) => (
+                <div key={index} style={{
+                  padding: '1rem',
+                  border: '1px solid #ddd',
+                  borderradius: '8px',
+                  width: '250px',
+                }}>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{review.name}</p>
+                  <p>{review.stars}</p>
+                  <p>{review.review}</p>
+                </div>
+              ))}
+            </div>  
+           </div>
         </div>
 
         {/* Bottom page/footer for once the user scrolls all the way down */}

@@ -108,3 +108,53 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.aboutSection {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: white;
+    margin: auto;
+}
+
+.aboutContent {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.aboutContent h2 {
+    font-size: 2.5rem;
+    color: #2a2a2a;
+}
+
+.aboutContent p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+
+.aboutImage {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutImage img {
+    border-radius: 20px;
+    width: 100%;
+    /* max-width: 400px; */
+}
+
+.reviewSection {
+    flex-wrap: wrap;
+}
+
+.reviewTrack {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+}

@@ -16,7 +16,7 @@ async function createDatabase(client, toInsert){ // ex: createDatabase(client, {
 }
 
 async function getDatabase(client, user){
-    const to_return = await client.db("rate_my_tutor").collection("users").find({username: user});
+    const to_return = await client.db("rate_my_tutor").collection("tutors").find({username: user});
     return to_return.toArray();
 }
 

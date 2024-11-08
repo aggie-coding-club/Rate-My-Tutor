@@ -39,7 +39,7 @@ export default function Home() {
           const data = await response.json();
           // Store data in sessionStorage instead of passing it via URL
           sessionStorage.setItem('searchResult', JSON.stringify(data));
-          router.push('/results'); // Navigate to results without passing data in the URL
+          router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);
         }

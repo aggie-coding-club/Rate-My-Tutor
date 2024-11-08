@@ -15,8 +15,8 @@ async function createDatabase(client, toInsert){ // ex: createDatabase(client, {
     console.log(`New listing created with the following id: ${result.insertedId}`)
 }
 
-async function getDatabase(client, user){
-    const to_return = await client.db("rate_my_tutor").collection("tutors").find({username: user});
+async function getDatabase(client, searchField, search){
+    const to_return = await client.db("rate_my_tutor").collection("tutors").find({searchField: search});
     return to_return.toArray();
 }
 
@@ -49,7 +49,7 @@ export async function POST(req) {
     await client.connect();
 
     //query the database
-    const document = await getDatabase(client, stringData);
+    const document = await getDatabase(client, "firstName", stringData);
     await client.close();
 
     return NextResponse.json({document}, { status: 200 });

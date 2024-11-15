@@ -24,6 +24,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();
 
+
+
+
+  
+
   const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault(); // Prevents form submission refresh
@@ -86,7 +91,7 @@ export default function Home() {
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="/search" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>

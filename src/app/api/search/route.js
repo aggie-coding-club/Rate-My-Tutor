@@ -16,7 +16,13 @@ async function createDatabase(client, toInsert){ // ex: createDatabase(client, {
 }
 
 async function getDatabase(client, searchField, search){
-    const to_return = await client.db("rate_my_tutor").collection("tutors").find({[searchField]: search});
+    const query = {
+        $or : [
+            {firstName: search},
+            {lastName: search}
+        ]
+    }
+    const to_return = await client.db("rate_my_tutor").collection("tutors").find(query);
     return to_return.toArray();
 }
 
@@ -28,6 +34,25 @@ async function updateDatabase(client, user, newName){
 async function deleteDatabase(client, user){ // ex: deleteDatabase(client, "freakbob");
     const result = await client.db("rate_my_tutor").collection("users").deleteOne({username: user});
     console.log(result);
+}
+export async function CREATE(req) {
+    const data = await req.json();
+
+    const stringData = data.searchText;
+    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/?retryWrites=true&w=majority&appName=users";
+    const { MongoClient } = require('mongodb');
+    const client = new MongoClient(uri); 
+    
+    const express = require('express');
+    const app = express();
+
+    await client.connect();
+
+    const document = await createDatabase(client, stringData);
+    
+    await client.close();
+
+    return NextResponse.json({document}, { status: 200 });
 }
 
 export async function POST(req) {
@@ -49,7 +74,9 @@ export async function POST(req) {
     await client.connect();
 
     //query the database
-    const document = await getDatabase(client, "firstName", stringData);
+    const document = await getDatabase(client, "lastName", stringData);
+    //const document2 = await getDatabase(client, "lastName", stringData);
+    //const document = await getDatabase(client)
     await client.close();
 
     return NextResponse.json({document}, { status: 200 });

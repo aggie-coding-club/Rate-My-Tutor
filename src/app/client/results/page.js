@@ -18,23 +18,27 @@ export default function Results() {
     const searchParams = useSearchParams(); // Get search parameters
     const [parsedData, setParsedData] = useState(null);
     const [loading, setLoading] = useState(true)
+    const [tutors, setTutors] = useState([])
 
     useEffect(() => {
         const dataString = sessionStorage.getItem('searchResult'); // Retrieve the data from sessionStorage
         if (dataString) {
             try {
                 setParsedData(JSON.parse(dataString));
+                addTutors(parsedData)
             } catch (error) {
                 console.error('Failed to parse data:', error);
-                setParsedData(null);
+                // setParsedData(null);
             }
         }
         setLoading(false)
 
     }, []);
     
+    const addTutors = (parsedData) => {
+        setTutors(...tutors, parsedData.document[0].firstName + " " + parsedData.document[0].lastName)
+    }
 
-    console.log(parsedData)
 
     return (
         loading ? (
@@ -58,12 +62,12 @@ export default function Results() {
                     {/* Display parsed data */}
                     <div>
                         <h1>
-                            {/* {console.log(parsedData.document)} */}
+                            {console.log(tutors)}
                             {parsedData
-                                ? `Tutor with the name ${parsedData.document.username} has been found`
+                                ? `Tutor with the name ${parsedData.document[0].firstName + " " + parsedData.document[0].lastName} has been found`
                                 : parsedData && parsedData.document.length > 1 
-                                ? `Tutors with the name ${parsedData.document.username} have been found`
-                                : `No tutors found. ${parsedData.document.username}`}
+                                ? `Tutors with the name skibidi have been found`
+                                : `No tutors found. sloppy toppy`}
                         </h1>
                     </div>
 

@@ -222,8 +222,6 @@
     padding: 1rem;
     background-color: #FAF9F6; 
 }
-
-<<<<<<< Updated upstream
 .loginSection {
     display: flex;
     flex-direction: column;
@@ -285,7 +283,6 @@
     margin-bottom: 1vw;
     font-weight: bold;
 }
-=======
 .teamContainer {
     width: 100vw;
     height: 90vh;
@@ -354,4 +351,3 @@
       grid-template-columns: 1fr;
     }
   }
->>>>>>> Stashed changes

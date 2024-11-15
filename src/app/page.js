@@ -6,9 +6,15 @@ import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import aboutImg from './client/Assets/aboutImage.png';
-import animeFunny from './client/Assets/animeFunny.jpeg'
 import React, { useRef } from 'react';
+
+// icons
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+
+// team images
+import longVo from '../app/client/Assets/teamImages/long.jpg'
+import kevinChen from '../app/client/Assets/teamImages/kev1.jpg'
+import lichengYi from '../app/client/Assets/teamImages/licheng.jpg'
 
 const background = {
   background: "white",
@@ -21,6 +27,65 @@ const reviews = [
   { name: 'Licheng Yi', review: 'I\'m one of the PTs for Rate my Tutor and I got to meet up so many wonderful students like Kevin Chen :3', stars: '★★★★★'},
   { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'},
   { name: 'Miguel', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'}
+]
+
+const teamMembers = [
+  {
+    name: "Kevin Chen",
+    role: "Project Manager",
+    image: kevinChen,
+    linkedin: "#",
+    github: "#"
+  },
+  {
+    name: "Licheng Yi",
+    role: "Project Manager",
+    image: lichengYi,
+    linkedin: "#",
+    github: "#"
+  },
+  {
+    name: "Long Vo",
+    role: "Project Manager",
+    image: longVo,
+    linkedin: "#",
+    github: "https://github.com/longv1-code"
+  },
+  {
+    name: "Lorenzo Viray",
+    role: "Member",
+    image: lichengYi,
+    linkedin: "#",
+    github: "https://github.com/CrunchyWaterIsNotIce"
+  },
+  {
+    name: "Aldiyar Seidaliyev",
+    role: "Member",
+    image: lichengYi,
+    linkedin: "#",
+    github: "https://github.com/aldiseida"
+  },
+  {
+    name: "Reuben Daniel",
+    role: "Member",
+    image: lichengYi,
+    linkedin: "#",
+    github: "https://github.com/reubend415"
+  },
+  {
+    name: "Miguel Canales",
+    role: "Member",
+    image: lichengYi,
+    linkedin: "#",
+    github: "https://github.com/MiguelCan13"
+  },
+  {
+    name: "Erica Tong",
+    role: "Member",
+    image: lichengYi,
+    linkedin: "#",
+    github: "https://github.com/lichtrune"
+  },
 ]
 
 export default function Home() {
@@ -73,11 +138,11 @@ export default function Home() {
         {/* Hero section */}
         <div className={styles.hero}>
           {/* navbar */}
-          <div className={styles.navbar}>
+          <div className={styles.navbar} style={{zIndex: '1000'}}>
             {/* image */}
             <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
-            <div className={styles.buttonContainer} style={{zIndex: '1000'}}>
+            <div className={styles.buttonContainer}>
               <button onClick= {scrollToAbout} className={styles.buttons}>
                 About
               </button>
@@ -137,6 +202,38 @@ export default function Home() {
               ))}
             </div>  
            </div>
+        </div>
+
+        <div className={styles.teamContainer}>
+          <div className={styles.teamGrid}>
+            {teamMembers.map((member, index) => (
+            <div key={index} className={styles.memberCard}>
+              <div className={styles.imageContainer}>
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={120}
+                  height={120}
+                  className={styles.profileImage}
+                />
+              </div>
+              <h3 className={styles.memberName}>{member.name}</h3>
+              <p className={styles.memberRole}>{member.role}</p>
+              <div className={styles.socialLinks}>
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin />
+                </a>
+              )}
+              {member.github && (
+                <a href={member.github} target="_blank" rel="noopener noreferrer">
+                  <FaGithub />
+                </a>
+              )}
+            </div>
+            </div>
+          ))}
+          </div>
         </div>
 
         {/* Bottom page/footer for once the user scrolls all the way down */}

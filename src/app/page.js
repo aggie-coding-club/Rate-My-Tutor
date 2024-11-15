@@ -93,10 +93,6 @@ export default function Home() {
   const router = useRouter();
 
 
-
-
-  
-
   const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault(); // Prevents form submission refresh
@@ -112,6 +108,7 @@ export default function Home() {
           const data = await response.json();
           // Store data in sessionStorage instead off passing it via URL
           sessionStorage.setItem('searchResult', JSON.stringify(data));   // I dont think this is needed???????????
+          sessionStorage.setItem('searchText', searchText);
           router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);

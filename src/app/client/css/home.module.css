@@ -213,6 +213,7 @@
     scrollbar-color: #e83c3c transparent; 
 }
 
+<<<<<<< Updated upstream
 .reviewTrack div {
     flex-shrink: 0; 
     width: 250px; 
@@ -221,3 +222,7 @@
     padding: 1rem;
     background-color: #FAF9F6; 
 }
+=======
+}
+
+>>>>>>> Stashed changes

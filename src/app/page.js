@@ -81,10 +81,10 @@ export default function Home() {
               <button onClick= {scrollToAbout} className={styles.buttons}>
                 About
               </button>
-              <button className={styles.buttons}>
+              <button className={styles.buttons} onClick={() => router.push('/login')}>
                 Log In
               </button>
-              <button className={styles.buttons}>
+              <button className={styles.buttons} onClick={() => router.push('/sign-up')}>
                 Sign Up
               </button>
             </div>

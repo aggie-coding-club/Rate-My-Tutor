@@ -53,10 +53,6 @@ export default function Signup() { // Renamed from Home to Signup
         const data = await response.json();
         console.log("Signup successful:", data);
         setSuccess("Account created successfully! Redirecting to login...");
-        // Optionally, redirect to login after a short delay
-        setTimeout(() => {
-          router.push("/login");
-        }, 3000); // Redirects after 3 seconds
       } else {
         const errorData = await response.json();
         console.error("Signup failed:", errorData.error);

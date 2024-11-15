@@ -9,7 +9,7 @@
 }
 
 .navbar {
-    background-color: #FFF4EA;
+    background-color: white;
     width: 100vw;
     height: 100px;
     display: flex;
@@ -25,7 +25,6 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-right: 30px;
 }
 
 .buttons {
@@ -51,7 +50,7 @@
 .searchbar {
     width: 40vw;
     height: 50px;
-    background-color: #FFF4EA;
+    background-color: white;
     color: black;
     border-radius: 5px;
     padding-left: 10px;
@@ -152,7 +151,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 40px;
-    background-color: #FFF4EA;
+    background-color: white;
     margin: auto;
 }
 

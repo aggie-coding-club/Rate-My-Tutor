@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = "KevinisHot";
 
 export async function POST(request) {
   try {
@@ -20,7 +20,7 @@ export async function POST(request) {
     }
 
     const client = await clientPromise;
-    const db = client.db();
+    const db = client.db("rate_my_tutor");
 
     // Find the user by email or username
     const user = await db.collection('users').findOne({

@@ -52,7 +52,7 @@ export default function Signup() { // Renamed from Home to Signup
       if (response.ok) {
         const data = await response.json();
         console.log("Signup successful:", data);
-        setSuccess("Account created successfully! Redirecting to login...");
+        setSuccess("Account created successfully!");
       } else {
         const errorData = await response.json();
         console.error("Signup failed:", errorData.error);

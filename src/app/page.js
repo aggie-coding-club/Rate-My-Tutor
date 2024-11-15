@@ -84,7 +84,7 @@ export default function Home() {
               <button className={styles.buttons} onClick={() => router.push('/login')}>
                 Log In
               </button>
-              <button className={styles.buttons} onClick={() => router.push('/sign-up')}>
+              <button className={styles.buttons} onClick={() => router.push('/signup')}>
                 Sign Up
               </button>
             </div>

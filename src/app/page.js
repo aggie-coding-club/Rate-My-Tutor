@@ -171,9 +171,9 @@ export default function Home() {
           <div className={styles.aboutContent}>
             <h2>Our Mission</h2>
             <p>
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Id ad pellentesque ultricies hendrerit venenatis fermentum. 
-              Phasellus facilisi pharetra etiam pharetra etiam tellus sociosqu placerat. Aliquet sed tempor gravida sodales facilisis purus non. 
-              Proin varius ante, nullam metus risus dolor. Arcu ultricies sed ad lorem ullamcorper; adipiscing porta.
+              To be able to bring the ability to search for tutors that suit your particular needs in a flash.
+              Before engaging with tutors be able to see how the community feels about them! Of course,
+              these ratings are subjective and should not fully influence your decisions. Happy tutor searching!
             </p>
           </div>
           <button className={styles.aboutImage}></button>

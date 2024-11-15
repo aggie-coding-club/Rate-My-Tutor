@@ -37,8 +37,8 @@ export default function Home() {
 
         if (response.ok) {
           const data = await response.json();
-          // Store data in sessionStorage instead of passing it via URL
-          sessionStorage.setItem('searchResult', JSON.stringify(data));
+          // Store data in sessionStorage instead off passing it via URL
+          sessionStorage.setItem('searchResult', JSON.stringify(data));   // I dont think this is needed???????????
           router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);

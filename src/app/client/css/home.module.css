@@ -146,7 +146,7 @@
 
 .aboutSection {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -163,6 +163,8 @@
 .aboutContent h2 {
     font-size: 2.5rem;
     color: #2a2a2a;
+    padding-bottom: 1.2rem;
+    font-weight: bold;
 }
 
 .aboutContent p {
@@ -172,24 +174,50 @@
 }
 
 .aboutImage {
+    width: 25vw;
+    height: 25vw;
     flex: 1;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.aboutImage img {
-    border-radius: 20px;
-    width: 100%;
-    /* max-width: 400px; */
+    background-image: url(../Assets//aboutImage.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .reviewSection {
-    flex-wrap: wrap;
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewSection h2 {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
 }
 
 .reviewTrack {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    flex-direction: row; 
+    gap: 20px; 
+    padding: 10px; 
+    overflow-x: auto; 
+    scrollbar-width: thin; 
+    scrollbar-color: #e83c3c transparent; 
+}
 
+.reviewTrack div {
+    flex-shrink: 0; 
+    width: 250px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #FAF9F6; 
 }

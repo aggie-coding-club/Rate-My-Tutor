@@ -6,7 +6,9 @@ import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import aboutImg from './assets/aboutImage.png';
+import aboutImg from './client/Assets/aboutImage.png';
+import animeFunny from './client/Assets/animeFunny.jpeg'
+import React, { useRef } from 'react';
 
 const background = {
   background: "white",
@@ -17,7 +19,8 @@ const background = {
 const reviews = [
   { name: 'Kevin Chen', review: 'I love the PTs so much, especially Licheng Yi ;)', stars: '★★★★★'},
   { name: 'Licheng Yi', review: 'I\'m one of the PTs for Rate my Tutor and I got to meet up so many wonderful students like Kevin Chen :3', stars: '★★★★★'},
-  { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'}
+  { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'},
+  { name: 'Miguel', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'}
 ]
 
 export default function Home() {
@@ -58,6 +61,11 @@ export default function Home() {
     setSearchText(e.target.value);
   };
 
+  const aboutRef = useRef(null);
+  const scrollToAbout = () => {
+    aboutRef.current.scrollIntoView({behavior: 'smooth'});
+  }
+
   return (
     <div style={background}>
       {/* Landing page for once the user loads into the website */}
@@ -69,8 +77,8 @@ export default function Home() {
             {/* image */}
             <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
-            <div className={styles.buttonContainer}>
-              <button className={styles.buttons}>
+            <div className={styles.buttonContainer} style={{zIndex: '1000'}}>
+              <button onClick= {scrollToAbout} className={styles.buttons}>
                 About
               </button>
               <button className={styles.buttons}>
@@ -97,7 +105,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.aboutSection}>
+        <div ref={aboutRef} className={styles.aboutSection}>
           <div className={styles.aboutContent}>
             <h2>Our Mission</h2>
             <p>
@@ -106,29 +114,23 @@ export default function Home() {
               Proin varius ante, nullam metus risus dolor. Arcu ultricies sed ad lorem ullamcorper; adipiscing porta.
             </p>
           </div>
-          <div className={styles.aboutImage}>
-            {/*<img src="/src/app/Assets/aboutImage.png" alt="Person reviewing"/>*/}
-            Image here
-          </div>
+          <button className={styles.aboutImage}></button>
         </div>
 
         <div className={styles.reviewSection} style={{padding: '2rem 0', backgroundColor: '#e83c3c', textAlign: 'center'}}>
           <h2>What do people think of us?</h2>
           <div style={{
             display: 'flex',
+            flexDirection: 'row',
             justifyContent: 'center',
-            gap: '1rem',
+            gap: '2rem',
+            padding: '2rem',
           }}>
             {/* add feature for carousel effect for reviews*/}
             <div className={styles.reviewTrack}>
               {reviews.map((review, index) => (
-                <div key={index} style={{
-                  padding: '1rem',
-                  border: '1px solid #ddd',
-                  borderradius: '8px',
-                  width: '250px',
-                }}>
-                  <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{review.name}</p>
+                <div key={index} style={{color: '#0B1215'}}>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 'bold'}}>{review.name}</p>
                   <p>{review.stars}</p>
                   <p>{review.review}</p>
                 </div>

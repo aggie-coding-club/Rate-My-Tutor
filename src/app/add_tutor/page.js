@@ -1,5 +1,5 @@
 'use client'
-import styles from '../css/home.module.css';
+import styles from '../client/css/home.module.css';
 import Link from 'next/link'
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
@@ -24,15 +24,22 @@ const AddTutor = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('/api/search/create', {
+            const res = await fetch('/api/auth/add_tutor', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    subject: formData.subject,
+                    rating: '4'
+
+                })
             });
 
             if (res.ok) {
+                const data = await res.json();
                 console.log('Tutor added successfully');
                 setFormData({ firstName: "", lastName: "", rating: 0, subject: ""});
             } else {

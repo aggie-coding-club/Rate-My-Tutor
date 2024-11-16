@@ -161,7 +161,7 @@ export default function Home() {
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>

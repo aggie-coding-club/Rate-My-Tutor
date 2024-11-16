@@ -61,6 +61,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black;
     height: 100vh;
     width: 100%;
     text-align: center; /* Required for submit-form button */
@@ -75,6 +76,7 @@
 .signupBar{
     display:flex;
     background-color: white;
+    color:black;
     width: 25vw;
     height: 4vw;
     border-radius: 5px;
@@ -244,6 +246,7 @@
 .loginBar {
     display: flex;
     background-color: white;
+    color: black;
     width: 25vw;
     height: 4vw;
     border-radius: 5px;
@@ -282,4 +285,9 @@
     color: #28a745;
     margin-bottom: 1vw;
     font-weight: bold;
+}
+
+.tutorfind {
+    color: black;
+    
 }

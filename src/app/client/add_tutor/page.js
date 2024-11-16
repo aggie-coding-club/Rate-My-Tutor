@@ -49,6 +49,7 @@ const AddTutor = () => {
                 <div>
                     <label>First Name:</label>
                     <input 
+                        className={styles.tutorfind}
                         type='text'
                         name='firstName'
                         value={formData.firstName}
@@ -59,6 +60,7 @@ const AddTutor = () => {
                 <div>
                     <label>Last Name:</label>
                     <input
+                        className={styles.tutorfind}
                         type='text'
                         name='lastName'
                         value={formData.lastName}
@@ -69,6 +71,7 @@ const AddTutor = () => {
                 <div>
                     <label>Subject:</label>
                     <input
+                        className={styles.tutorfind}    
                         type='text'
                         name='subject'
                         value={formData.subject}

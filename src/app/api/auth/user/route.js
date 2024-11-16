@@ -1,48 +1,62 @@
-// app/api/auth/user/route.js
+// app/api/auth/login/route.js
 
+import { NextResponse } from 'next/server';
 import clientPromise from '../../../server/server';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { ObjectId } from 'mongodb';
+import { serialize } from 'cookie';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = "KevinisHot";
 
-export async function GET(request) {
+export async function POST(request) {
   try {
-    const token = request.cookies.get('token')?.value;
+    const { identifier, password } = await request.json();
 
-    if (!token) {
-      return new Response(JSON.stringify({ message: 'Not authenticated.' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    if (!identifier || !password) {
+      return NextResponse.json({ message: 'All fields are required.' }, { status: 400 });
     }
-
-    const decoded = jwt.verify(token, JWT_SECRET);
 
     const client = await clientPromise;
-    const db = client.db();
+    const db = client.db("rate_my_tutor");
 
-    const user = await db.collection('users').findOne(
-      { _id: new ObjectId(decoded.userId) },
-      { projection: { password: 0 } } // Exclude password
-    );
+    // Find user by email or username
+    const user = await db.collection('users').findOne({
+      $or: [{ email: identifier }, { username: identifier }],
+    });
 
     if (!user) {
-      return new Response(JSON.stringify({ message: 'User not found.' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return NextResponse.json({ message: 'Invalid credentials.' }, { status: 401 });
     }
 
-    return new Response(JSON.stringify({ user }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
+    // Compare password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return NextResponse.json({ message: 'Invalid credentials.' }, { status: 401 });
+    }
+
+    // Create JWT token
+    const token = jwt.sign(
+      { userId: user._id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    // Serialize cookie
+    const serializedCookie = serialize('token', token, {
+      httpOnly: true,
+      //secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 3600, // 1 hour
+      path: '/',
     });
+
+    // Set cookie in response headers
+    const response = NextResponse.json({ message: 'Login successful.' }, { status: 200 });
+    response.headers.set('Set-Cookie', serializedCookie);
+
+    return response;
   } catch (error) {
-    console.error('User fetch error:', error);
-    return new Response(JSON.stringify({ message: 'Invalid token.' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Login error:', error);
+    return NextResponse.json({ message: 'Internal server error.' }, { status: 500 });
   }
 }

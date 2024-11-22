@@ -2,9 +2,14 @@
 import styles from '../css/results.module.css';
 import Link from 'next/link'
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { useRouter } from 'next/navigation';
 import { parse } from 'path';
 import { useSearchParams } from 'next/navigation';
+=======
+// import { useRouter } from 'next/navigation';
+
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 
 const background = {
   background: "white",
@@ -46,6 +51,14 @@ export default function Results() {
         }
     }, [parsedData]);
 
+<<<<<<< HEAD
+=======
+    const handleClick = (index) => {
+        const selectedTutor = tutors[index];
+        sessionStorage.setItem('tutor', JSON.stringify(selectedTutor));
+    }
+
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     if (loading || !parsedData) {
         return <h1>Loading...</h1>
     }
@@ -84,8 +97,14 @@ export default function Results() {
                     <div className={styles.searchResults}>
                         <div className ={styles.idkwhattonamethis}>
                             <h1 className={styles.tutorsFoundText}>
+<<<<<<< HEAD
                                 {/* {console.log(userSearch)}
                                 {console.log('peepee')} */}
+=======
+                                {/* {console.log(userSearch)} */}
+                                {/*{console.log('peepee')} */}
+                                {/* {console.log(tutors)} */}
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
                                 {tutors.length != 0 ? 
                                     (<>
                                         Tutors with the name "<span style={{ fontWeight: 'bold' }}>{userSearch}</span>" have been found
@@ -105,7 +124,11 @@ export default function Results() {
                             <div className={styles.tutorsResults}>
                                 {tutors.length > 0 ? (
                                     tutors.map((tutor, index) => (
+<<<<<<< HEAD
                                         <Link className={styles.tutors} href="/" key={index}>{tutor.firstName} {tutor.lastName}</Link>
+=======
+                                        <Link className={styles.tutors} href={`/client/tutor/${tutor._id}`} key={index} onClick={() => handleClick(index)}>{tutor.firstName} {tutor.lastName}</Link>
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
                                     ))
                                     ) : (
                                         <div style={{display: "flex", flexDirection: "column", justifyContent:'center',alignItems: 'center', backgroundColor: "rgb(247, 247, 247)", height: "125px"}}>

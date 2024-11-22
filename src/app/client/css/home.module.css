@@ -9,7 +9,11 @@
 }
 
 .navbar {
+<<<<<<< HEAD
     background-color: #FFF4EA;
+=======
+    background-color: white;
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     width: 100vw;
     height: 100px;
     display: flex;
@@ -18,7 +22,10 @@
     align-items: center;
     position: fixed;
     top: 0;
+<<<<<<< HEAD
     margin-right: 30px;
+=======
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 }
 
 .buttonContainer {
@@ -38,7 +45,10 @@
     height: 100%;
     background-image: url(/assets/RMT.png);
     background-size: cover;
+<<<<<<< HEAD
     margin-left: 20px;
+=======
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 }
 
 .searchSection {
@@ -67,6 +77,10 @@
     height: 100vh;
     width: 100%;
     text-align: center; /* Required for submit-form button */
+<<<<<<< HEAD
+=======
+    padding-top: 60px;
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 }
 
 .signupSection h1 {
@@ -86,6 +100,7 @@
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 .submitInfoButton{
     width: 15vw;
     height: 4vw;
@@ -94,6 +109,8 @@
     border-radius: 4px;
 }
 
+=======
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 .helpComments {
     color: black;
 }
@@ -155,7 +172,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 40px;
+<<<<<<< HEAD
     background-color: #FFF4EA;
+=======
+    background-color: white;
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     margin: auto;
 }
 
@@ -226,6 +247,7 @@
     background-color: #FAF9F6; 
 }
 
+<<<<<<< HEAD
 .teamContainer {
     width: 100vw;
     height: 90vh;
@@ -294,15 +316,24 @@
     }
   }
 
+=======
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 .loginSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     height: 80vh; /* Adjusted to account for fixed navbar */
     width: 100%;
     text-align: center;
     padding-top: 120px; /* To prevent overlap with fixed navbar */
+=======
+    height: 100vh; /* Adjusted to account for fixed navbar */
+    width: 100%;
+    text-align: center;
+    padding-top: 60px; /* To prevent overlap with fixed navbar */
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 }
 
 /* Login Form Heading */
@@ -326,8 +357,13 @@
     font-size: 1rem;
 }
 
+<<<<<<< HEAD
 /* Login Submit Button */
 .loginSubmitButton {
+=======
+/* Submit Button */
+.submitButton {
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     width: 15vw;
     height: 4vw;
     background-color: #2C2C2C;
@@ -339,25 +375,49 @@
     transition: background-color 0.3s ease;
 }
 
+<<<<<<< HEAD
 .loginSubmitButton:hover {
+=======
+.submitButton:hover {
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     background-color: #444444; /* Hover effect */
 }
 
 /* Error Message Styling */
 .loginError {
+<<<<<<< HEAD
     color: #dc3545;
+=======
+    color: #890f1d;
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     margin-bottom: 1vw;
     font-weight: bold;
 }
 
 /* Success Message Styling */
 .loginSuccess {
+<<<<<<< HEAD
     color: #28a745;
+=======
+    color: #95f0aa;
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
     margin-bottom: 1vw;
     font-weight: bold;
 }
 
 .tutorfind {
     color: black;
+<<<<<<< HEAD
     
 }
+=======
+}
+
+
+.reviewSliderContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+>>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1

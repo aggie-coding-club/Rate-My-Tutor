@@ -1,5 +1,5 @@
 'use client'
-import styles from '../client/css/home.module.css';
+import styles from '../css/home.module.css';
 import Link from 'next/link'
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';

@@ -72,7 +72,6 @@ export default function Login() { // Renamed to Login
                         <Link href="/" className={styles.logo} aria-label="Rate My Tutor Home"></Link>
                         {/* Navigation Buttons */}
                         <div className={styles.buttonContainer}>
-<<<<<<< HEAD
                             <Link href="/?scrollTo=about">
                                 <button className={styles.buttons}>About</button>
                             </Link>
@@ -80,15 +79,6 @@ export default function Login() { // Renamed to Login
                                 Log In
                             </Link>
                             <Link href="/signup" className={`${styles.buttons} ${styles.activeButton}`}>
-=======
-                            <Link href="/#about" className={styles.buttons}>
-                                About
-                            </Link>
-                            <Link href="/login" className={`${styles.buttons} ${styles.activeButton}`}>
-                                Log In
-                            </Link>
-                            <Link href="/signup" className={styles.buttons}>
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
                                 Sign Up
                             </Link>
                         </div>
@@ -97,11 +87,7 @@ export default function Login() { // Renamed to Login
                     {/* Login Page section */}
                     <div className={styles.loginSection}>
                         <form onSubmit={handleSubmit} className={styles.loginSection} aria-label="Login Form">
-<<<<<<< HEAD
-                            <h1 style={{ fontSize: "40px", color: "#fff" }}>Log In to Your Account</h1>
-=======
                             <h1 style={{ fontSize: "40px", color: "#000" }}>Welcome Back, Log In to Get Started!</h1>
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
 
                             {/* Display Success Message */}
                             {success && <strong className={styles.loginSuccess}>{success}</strong>}
@@ -129,11 +115,7 @@ export default function Login() { // Renamed to Login
                                 required
                                 aria-label="Password"
                             />
-<<<<<<< HEAD
-                            <button type="submit" className={styles.loginSubmitButton}>
-=======
                             <button type="submit" className={styles.submitButton}>
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
                                 Log In
                             </button>
                         </form>

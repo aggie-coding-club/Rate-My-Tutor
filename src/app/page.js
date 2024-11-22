@@ -93,6 +93,8 @@ const teamMembers = [
 export default function Home() {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();
+
+
   const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault(); // Prevents form submission refresh
@@ -108,6 +110,7 @@ export default function Home() {
           const data = await response.json();
           // Store data in sessionStorage instead off passing it via URL
           sessionStorage.setItem('searchResult', JSON.stringify(data));   // I dont think this is needed???????????
+          sessionStorage.setItem('searchText', searchText);
           router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);
@@ -128,16 +131,16 @@ export default function Home() {
     scrollToWithOffset(aboutRef.current, 65);
   };
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const scrollTo = params.get("scrollTo");
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const scrollTo = params.get("scrollTo");
 
-    if (scrollTo === "about" && aboutRef.current) {
-      scrollToWithOffset(aboutRef.current, 65);
-      const newURL = window.location.origin + window.location.pathname;
-      window.history.replaceState({}, document.title, newURL);
-    }
-  }, []);
+  //   if (scrollTo === "about" && aboutRef.current) {
+  //     scrollToWithOffset(aboutRef.current, 65);
+  //     const newURL = window.location.origin + window.location.pathname;
+  //     window.history.replaceState({}, document.title, newURL);
+  //   }
+  // }, []);
 
   return (
     <div style={background}>
@@ -165,13 +168,13 @@ export default function Home() {
           {/* search section */}
           <div>
             <div className={styles.searchSection}>
-              <h1 className={styles.helpComments} style={{color: "white"}}>Enter your Tutor's name to get started.</h1>
+              <h1 className={styles.helpComments} >Enter your Tutor's name to get started.</h1>
               <form >
                 <input className={styles.searchbar} name="searchbar" type="text" value={searchText} placeholder="Search" onKeyDown={handleEnter} onChange={handleChange}></input>
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>

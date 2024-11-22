@@ -3,9 +3,9 @@
     height: 100vh;
     background-color: #E43F3F;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     overscroll-behavior-y: none;
 }
 
@@ -44,6 +44,51 @@
 /* end nav bar section */
 
 
+.tutorSection {
+    width: 100vw;
+    margin-top: 100px;
+    margin-left: 25px;
+}
+
+.tutorInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tutorName {
+    font-size: 50px;
+    display: inline-block;
+
+}
+.tutorRating {
+    font-size: 48px;
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.tutorSubjects {
+    font-size: 20px;
+    color: rgb(167, 167, 167);
+
+}
+
+.ratingDist {
+    width: 50%;
+    height: 60vh;
+    border: 1px solid #2C2C2C ;
+    background-color: rgb(232, 232, 232);
+    color: black;
+    border-radius: 20px;
+    padding: 25px 15px 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 100px;
+}
+
 
 /* footer section*/
 .footer {
@@ -55,6 +100,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    bottom: 0;
 }
 
 .socials{

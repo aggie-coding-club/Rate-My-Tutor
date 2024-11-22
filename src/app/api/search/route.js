@@ -1,54 +1,84 @@
-// app/api/auth/signup/route.js
+import { NextResponse } from "next/server";
 
-import clientPromise from '../../server/server';
-import bcrypt from 'bcrypt';
 
-export async function POST(request) {
-  try {
-    const { firstName, lastName, rating } = await request.json();
 
-    // Basic validation
-    if (!firstName || !lastName || !rating) {
-      return new Response(JSON.stringify({ message: 'All fields are required.' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+const { toUSVString } = require('util');
 
-    const client = await clientPromise;
-    const db = await client.db('rate_my_tutor');
+async function listDatabases(client){
+    databasesList = await client.db().admin().listDatabases();
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
 
-    // Check if email or username already exists
-    const existingUser = await db.collection('tutors').findOne({
-      $or: [{ firstname }, { lastName }],
-    });
-
-    if (existingUser) {
-      return new Response(JSON.stringify({ message: 'Email or Username already in use.' }), {
-        status: 409,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create the new user
-    const user = await db.collection('tutors').insertOne({
-      firstName,
-      lastName,
-      rating,
-    });
-
-    return new Response(JSON.stringify({ message: 'User created successfully.' }), {
-      status: 201,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    console.error('Signup error:', error);
-    return new Response(JSON.stringify({ message: 'Internal server error.' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+async function createDatabase(client, toInsert){ // ex: createDatabase(client, {username: "freakbob", password: "babyoil17000", email: "pickupdaphonebaby@yahoo.com"})
+    const result = await client.db("rate_my_tutor").collection("users").insertOne(toInsert)
+    console.log(`New listing created with the following id: ${result.insertedId}`)
 }
+
+async function getDatabase(client, searchField, search){
+    const query = {
+        $or : [
+            {firstName: search},
+            {lastName: search}
+        ]
+    }
+    const to_return = await client.db("rate_my_tutor").collection("tutors").find(query);
+    return to_return.toArray();
+}
+
+async function updateDatabase(client, user, newName){ 
+    const result = await client.db("rate_my_tutor").collection("users").updateOne({username: user}, {$set: newName});
+    console.log(result);
+}
+
+async function deleteDatabase(client, user){ // ex: deleteDatabase(client, "freakbob");
+    const result = await client.db("rate_my_tutor").collection("users").deleteOne({username: user});
+    console.log(result);
+}
+export async function CREATE(req) {
+    const data = await req.json();
+
+    const stringData = data.searchText;
+    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/?retryWrites=true&w=majority&appName=users";
+    const { MongoClient } = require('mongodb');
+    const client = new MongoClient(uri); 
+    
+    const express = require('express');
+    const app = express();
+
+    await client.connect();
+
+    const document = await createDatabase(client, stringData);
+    
+    await client.close();
+
+    return NextResponse.json({document}, { status: 200 });
+}
+
+export async function POST(req) {
+    //input data
+    const data = await req.json();
+
+    const stringData = data.searchText;
+
+    //connect to mongo
+    // const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/";
+    const uri = "mongodb+srv://lichengtx:iloveratemytutor@users.y0ul8.mongodb.net/?retryWrites=true&w=majority&appName=users";
+    const { MongoClient } = require('mongodb');
+    const client = new MongoClient(uri);  
+
+    
+    const express = require('express');
+    const app = express();
+
+    await client.connect();
+
+    //query the database
+    const document = await getDatabase(client, "lastName", stringData);
+    //const document2 = await getDatabase(client, "lastName", stringData);
+    //const document = await getDatabase(client)
+    await client.close();
+
+    return NextResponse.json({document}, { status: 200 });
+}
+

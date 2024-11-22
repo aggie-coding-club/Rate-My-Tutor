@@ -1,0 +1,363 @@
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-color: #E43F3F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    background-color: #FFF4EA;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    margin-right: 30px;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.buttons {
+    color: black;
+    margin: 10px;
+}
+
+.logo {
+    width: 30%;
+    height: 100%;
+    background-image: url(/assets/RMT.png);
+    background-size: cover;
+    margin-left: 20px;
+}
+
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.searchbar {
+    width: 40vw;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.signupSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: 100vh;
+    width: 100%;
+    text-align: center; /* Required for submit-form button */
+}
+
+.signupSection h1 {
+    color: white;
+    margin-bottom: 2vw;
+    text-align: center;
+}
+
+.signupBar{
+    display:flex;
+    background-color: white;
+    color:black;
+    width: 25vw;
+    height: 4vw;
+    border-radius: 5px;
+    margin-bottom: 1vw;
+    padding-left: 10px;
+}
+
+.submitInfoButton{
+    width: 15vw;
+    height: 4vw;
+    background-color: #2C2C2C;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+.helpComments {
+    color: black;
+}
+
+.footer {
+    position: relative;
+    background-color: #2C2C2C;
+    width: 100vw;
+    height: 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+    gap: 20px;
+}
+.copyright {
+    color: white;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    width: 25vw;
+    height: 100%;
+    background-image: url(../assets/RMT.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.instagram {
+    width: 2vw;
+    height: 2vw;
+    background-image: url(../assets/instaIcon.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tiktok {
+    width: 2vw;
+    height: 2vw;
+    background-image: url(../assets/tiktokIcon.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.aboutSection {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: #FFF4EA;
+    margin: auto;
+}
+
+.aboutContent {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.aboutContent h2 {
+    font-size: 2.5rem;
+    color: #2a2a2a;
+    padding-bottom: 1.2rem;
+    font-weight: bold;
+}
+
+.aboutContent p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+
+.aboutImage {
+    width: 25vw;
+    height: 25vw;
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../Assets//aboutImage.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.reviewSection {
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewSection h2 {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.reviewTrack {
+    display: flex; 
+    flex-direction: row; 
+    gap: 20px; 
+    padding: 10px; 
+    overflow-x: auto; 
+    scrollbar-width: thin; 
+    scrollbar-color: #e83c3c transparent; 
+}
+
+.reviewTrack div {
+    flex-shrink: 0; 
+    width: 250px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #FAF9F6; 
+}
+
+.teamContainer {
+    width: 100vw;
+    height: 90vh;
+    padding: 2rem;
+    background-color: #FFF4EA;
+    box-sizing: border-box;
+  }
+  
+  .teamGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+  }
+  
+  .memberCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .imageContainer {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  .profileImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+  }
+  
+  .memberName {
+    margin: 0.2rem 0 0.4rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1A1A1D;
+  }
+  
+  .memberRole {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #1A1A1D;
+  }
+  .socialLinks {
+    display: flex;
+    flex-direction: row;
+    color: #1A1A1D;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .teamGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .teamGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+.loginSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Adjusted to account for fixed navbar */
+    width: 100%;
+    text-align: center;
+    padding-top: 120px; /* To prevent overlap with fixed navbar */
+}
+
+/* Login Form Heading */
+.loginSection h1 {
+    color: white;
+    margin-bottom: 2vw;
+    text-align: center;
+}
+
+/* Login Input Fields */
+.loginBar {
+    display: flex;
+    background-color: white;
+    color: black;
+    width: 25vw;
+    height: 4vw;
+    border-radius: 5px;
+    margin-bottom: 1vw;
+    padding-left: 10px;
+    align-items: center;
+    font-size: 1rem;
+}
+
+/* Login Submit Button */
+.loginSubmitButton {
+    width: 15vw;
+    height: 4vw;
+    background-color: #2C2C2C;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.loginSubmitButton:hover {
+    background-color: #444444; /* Hover effect */
+}
+
+/* Error Message Styling */
+.loginError {
+    color: #dc3545;
+    margin-bottom: 1vw;
+    font-weight: bold;
+}
+
+/* Success Message Styling */
+.loginSuccess {
+    color: #28a745;
+    margin-bottom: 1vw;
+    font-weight: bold;
+}
+
+.tutorfind {
+    color: black;
+    
+}

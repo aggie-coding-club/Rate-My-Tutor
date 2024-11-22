@@ -43,46 +43,6 @@
 
 /* end nav bar section */
 
-.searchResults {
-    width: 100%;
-    height: 100%;
-    padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.idkwhattonamethis {
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-}
-
-.tutorsFoundText {
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-
-.tutorsResults {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-}
-
-.tutors {
-    width: 60%;
-    height: 125px;
-    background-color: #932424;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 15px;
-}
-
-
-
-
 
 
 /* footer section*/

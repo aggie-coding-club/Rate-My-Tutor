@@ -30,6 +30,10 @@ export default function Tutor() {
         setTutor(sessionStorage.getItem('tutor'))
     }, []);
 
+    if (!tutor) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <div style={background}>
             <div style={{ height: "100vh", width: "100vw", backgroundColor: "black" }}>
@@ -48,7 +52,33 @@ export default function Tutor() {
 
                 {/* Starts here */}
 
-                <p>{tutor}</p>
+                {/* Name and rating section */}
+                <section>
+                    <h1>
+                        {tutor.firstName} {tutor.lastName}
+                    </h1>
+                    <h1>
+                        {tutor.rating} / 5
+                    </h1>
+                </section>
+
+                {/* tag section */}
+                <section>
+                    subjects: subjects goes here
+                </section>
+
+                {/* rating distribution */}
+                <section>
+                    <div>
+
+                    </div>
+                </section>
+
+                {/* other misc */}
+                <section>
+                    <h1>69% would take again</h1>
+                    <h1>top tags</h1> 
+                </section>
 
                 {/* Footer */}
                 <div className={styles.footer}>

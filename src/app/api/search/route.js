@@ -1,6 +1,6 @@
 // app/api/auth/signup/route.js
 
-import clientPromise from '../../../server/server';
+import clientPromise from '../../server/server';
 import bcrypt from 'bcrypt';
 
 export async function POST(request) {

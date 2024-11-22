@@ -167,7 +167,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={aboutRef} className={styles.aboutSection}>
+        <div ref={aboutRef} className={styles.aboutSection} id="about">
           <div className={styles.aboutContent}>
             <h2>Our Mission</h2>
             <p>

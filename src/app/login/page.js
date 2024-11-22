@@ -72,7 +72,7 @@ export default function Login() { // Renamed to Login
                         <Link href="/" className={styles.logo} aria-label="Rate My Tutor Home"></Link>
                         {/* Navigation Buttons */}
                         <div className={styles.buttonContainer}>
-                            <Link href="/about" className={styles.buttons}>
+                            <Link href="/#about" className={styles.buttons}>
                                 About
                             </Link>
                             <Link href="/login" className={`${styles.buttons} ${styles.activeButton}`}>
@@ -87,7 +87,7 @@ export default function Login() { // Renamed to Login
                     {/* Login Page section */}
                     <div className={styles.loginSection}>
                         <form onSubmit={handleSubmit} className={styles.loginSection} aria-label="Login Form">
-                            <h1 style={{ fontSize: "40px", color: "#fff" }}>Log In to Your Account</h1>
+                            <h1 style={{ fontSize: "40px", color: "#fff" }}>Welcome Back, Log In to Get Started!</h1>
 
                             {/* Display Success Message */}
                             {success && <strong className={styles.loginSuccess}>{success}</strong>}
@@ -115,7 +115,7 @@ export default function Login() { // Renamed to Login
                                 required
                                 aria-label="Password"
                             />
-                            <button type="submit" className={styles.loginSubmitButton}>
+                            <button type="submit" className={styles.submitButton}>
                                 Log In
                             </button>
                         </form>

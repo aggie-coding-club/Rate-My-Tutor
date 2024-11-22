@@ -65,6 +65,7 @@
     height: 100vh;
     width: 100%;
     text-align: center; /* Required for submit-form button */
+    padding-top: 60px;
 }
 
 .signupSection h1 {
@@ -82,14 +83,6 @@
     border-radius: 5px;
     margin-bottom: 1vw;
     padding-left: 10px;
-}
-
-.submitInfoButton{
-    width: 15vw;
-    height: 4vw;
-    background-color: #2C2C2C;
-    color: rgb(255, 255, 255);
-    border-radius: 4px;
 }
 
 .helpComments {
@@ -229,10 +222,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Adjusted to account for fixed navbar */
+    height: 100vh; /* Adjusted to account for fixed navbar */
     width: 100%;
     text-align: center;
-    padding-top: 120px; /* To prevent overlap with fixed navbar */
+    padding-top: 60px; /* To prevent overlap with fixed navbar */
 }
 
 /* Login Form Heading */
@@ -256,8 +249,8 @@
     font-size: 1rem;
 }
 
-/* Login Submit Button */
-.loginSubmitButton {
+/* Submit Button */
+.submitButton {
     width: 15vw;
     height: 4vw;
     background-color: #2C2C2C;
@@ -269,20 +262,20 @@
     transition: background-color 0.3s ease;
 }
 
-.loginSubmitButton:hover {
+.submitButton:hover {
     background-color: #444444; /* Hover effect */
 }
 
 /* Error Message Styling */
 .loginError {
-    color: #dc3545;
+    color: #890f1d;
     margin-bottom: 1vw;
     font-weight: bold;
 }
 
 /* Success Message Styling */
 .loginSuccess {
-    color: #28a745;
+    color: #95f0aa;
     margin-bottom: 1vw;
     font-weight: bold;
 }

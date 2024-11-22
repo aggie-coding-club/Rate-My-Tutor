@@ -23,6 +23,8 @@ const AddTutor = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
+        console.log('Form Data:', JSON.stringify(formData));
+
         try {
             const res = await fetch('/api/search/create', {
                 method: 'POST',

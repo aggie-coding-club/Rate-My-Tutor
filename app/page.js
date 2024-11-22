@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
-import styles from '../client/css/home.module.css';
-import RMT from '../client/Assets/RMT.png'
+import styles from './client/css/home.module.css';
+import RMT from './client/Assets/RMT.png'
 import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
@@ -12,9 +12,9 @@ import React, { useRef } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 // team images
-import longVo from '../client/Assets/teamImages/long.jpg'
-import kevinChen from '../client/Assets/teamImages/kev1.jpg'
-import lichengYi from '../client/Assets/teamImages/licheng.jpg'
+import longVo from '../app/client/Assets/teamImages/long.jpg'
+import kevinChen from '../app/client/Assets/teamImages/kev1.jpg'
+import lichengYi from '../app/client/Assets/teamImages/licheng.jpg'
 
 const background = {
   background: "white",
@@ -93,10 +93,6 @@ export default function Home() {
   const router = useRouter();
 
 
-
-
-  
-
   const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault(); // Prevents form submission refresh
@@ -112,6 +108,7 @@ export default function Home() {
           const data = await response.json();
           // Store data in sessionStorage instead off passing it via URL
           sessionStorage.setItem('searchResult', JSON.stringify(data));   // I dont think this is needed???????????
+          sessionStorage.setItem('searchText', searchText);
           router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);
@@ -146,11 +143,11 @@ export default function Home() {
               <button onClick= {scrollToAbout} className={styles.buttons}>
                 About
               </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
-                Tutors
+              <button className={styles.buttons} onClick={() => router.push('/login')}>
+                Log In
               </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
-                Sign out
+              <button className={styles.buttons} onClick={() => router.push('/signup')}>
+                Sign Up
               </button>
             </div>
           </div>
@@ -164,7 +161,7 @@ export default function Home() {
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>
@@ -174,9 +171,9 @@ export default function Home() {
           <div className={styles.aboutContent}>
             <h2>Our Mission</h2>
             <p>
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Id ad pellentesque ultricies hendrerit venenatis fermentum. 
-              Phasellus facilisi pharetra etiam pharetra etiam tellus sociosqu placerat. Aliquet sed tempor gravida sodales facilisis purus non. 
-              Proin varius ante, nullam metus risus dolor. Arcu ultricies sed ad lorem ullamcorper; adipiscing porta.
+              To be able to bring the ability to search for tutors that suit your particular needs in a flash.
+              Before engaging with tutors be able to see how the community feels about them! Of course,
+              these ratings are subjective and should not fully influence your decisions. Happy tutor searching!
             </p>
           </div>
           <button className={styles.aboutImage}></button>

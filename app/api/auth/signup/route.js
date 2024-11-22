@@ -5,10 +5,10 @@ import bcrypt from 'bcrypt';
 
 export async function POST(request) {
   try {
-    const { firstName, lastName, rating } = await request.json();
+    const { username, first_name, last_name, email, password } = await request.json();
 
     // Basic validation
-    if (!firstName || !lastName || !rating) {
+    if (!username || !first_name || !last_name || !email || !password) {
       return new Response(JSON.stringify({ message: 'All fields are required.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -19,8 +19,8 @@ export async function POST(request) {
     const db = await client.db('rate_my_tutor');
 
     // Check if email or username already exists
-    const existingUser = await db.collection('tutors').findOne({
-      $or: [{ firstname }, { lastName }],
+    const existingUser = await db.collection('users').findOne({
+      $or: [{ email }, { username }],
     });
 
     if (existingUser) {
@@ -34,10 +34,13 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create the new user
-    const user = await db.collection('tutors').insertOne({
-      firstName,
-      lastName,
-      rating,
+    const user = await db.collection('users').insertOne({
+      username,
+      first_name,
+      last_name,
+      email,
+      password: hashedPassword,
+      createdAt: new Date(),
     });
 
     return new Response(JSON.stringify({ message: 'User created successfully.' }), {

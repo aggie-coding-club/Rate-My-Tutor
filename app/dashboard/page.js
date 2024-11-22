@@ -146,10 +146,10 @@ export default function Home() {
               <button onClick= {scrollToAbout} className={styles.buttons}>
                 About
               </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
+              <button className={styles.buttons} onClick={() => router.push('/tutors')}>
                 Tutors
               </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
+              <button className={styles.buttons} onClick={() => router.push('/signup')}>
                 Sign out
               </button>
             </div>
@@ -164,7 +164,7 @@ export default function Home() {
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>

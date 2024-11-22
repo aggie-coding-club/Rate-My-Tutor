@@ -76,13 +76,8 @@ export default function Signup() { // Renamed from Home to Signup
             <Link href="/" className={styles.logo} aria-label="Rate My Tutor Home"></Link>
             {/* Navigation Buttons */}
             <div className={styles.buttonContainer}>
-<<<<<<< HEAD
-              <Link href="/?scrollTo=about">
-                <button className={styles.buttons}>About</button>
-=======
-              <Link href="/#about" className={styles.buttons}>
+              <Link href="/about" className={styles.buttons}>
                 About
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
               </Link>
               <Link href="/login" className={styles.buttons}>
                 Log In
@@ -94,7 +89,6 @@ export default function Signup() { // Renamed from Home to Signup
           </div>
 
           {/* Sign Up Page section */}
-<<<<<<< HEAD
           <div className={styles.signupContainer}>
             <form onSubmit={handleSubmit} className={styles.signupSection} aria-label="Sign Up Form">
               <h1 style={{ fontSize: "40px", color: "#fff" }}>Enter your information to sign up</h1>
@@ -104,17 +98,6 @@ export default function Signup() { // Renamed from Home to Signup
               
               {/* Display Error Message */}
               {error && <strong style={{ color: "#dc3545", marginBottom: "1rem" }}>{error}</strong>}
-=======
-          <div className={styles.signupSection}>
-            <form onSubmit={handleSubmit} className={styles.signupSection} aria-label="Sign Up Form">
-              <h1 style={{ fontSize: "40px", color: "#000" }}>Enter Your Information to Sign Up</h1>
-              
-              {/* Display Success Message */}
-              {success && <strong style={{ color: "#95f0aa", marginBottom: "1rem" }}>{success}</strong>}
-              
-              {/* Display Error Message */}
-              {error && <strong style={{ color: "#890f1d", marginBottom: "1rem" }}>{error}</strong>}
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
               
               <input
                 className={styles.signupBar}
@@ -166,11 +149,7 @@ export default function Signup() { // Renamed from Home to Signup
                 required
                 aria-label="Password"
               />
-<<<<<<< HEAD
               <button type="submit" className={styles.submitInfoButton}>
-=======
-              <button type="submit" className={styles.submitButton}>
->>>>>>> 89a7a6a0e1a87d84cf70ae86649b85e45675dba1
                 Continue
               </button>
             </form>

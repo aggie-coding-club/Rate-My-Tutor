@@ -1,20 +1,29 @@
 'use client'
 import Image from "next/image";
 import styles from './client/css/home.module.css';
-import RMT from './client/Assets/RMT.png'
-import Link from 'next/link'
-import { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import React, { useRef } from 'react';
+import { scrollToWithOffset } from './utils/scrollToWithOffset';
+import Link from 'next/link'
+
+// for slider
+import dynamic from 'next/dynamic';
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 // icons
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 // team images
 import longVo from '../app/client/Assets/teamImages/long.jpg'
-import kevinChen from '../app/client/Assets/teamImages/kev1.jpg'
+import kevinChen from '../app/client/Assets/teamImages/kev.jpg'
 import lichengYi from '../app/client/Assets/teamImages/licheng.jpg'
+import erica from '../app/client/Assets/teamImages/erica.jpg'
+import aldiyar from '../app/client/Assets/teamImages/aldiyar.jpg'
+import lorenzo from '../app/client/Assets/teamImages/lorenzo.jpg'
+import miguel from '../app/client/Assets/teamImages/miguel.jpg'
+import reuben from '../app/client/Assets/teamImages/reuben.png'
 
 const background = {
   background: "white",
@@ -26,7 +35,8 @@ const reviews = [
   { name: 'Kevin Chen', review: 'I love the PTs so much, especially Licheng Yi ;)', stars: '★★★★★'},
   { name: 'Licheng Yi', review: 'I\'m one of the PTs for Rate my Tutor and I got to meet up so many wonderful students like Kevin Chen :3', stars: '★★★★★'},
   { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'},
-  { name: 'Miguel', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'}
+  { name: 'Miguel C', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'},
+  { name: 'Lorenzo V', review: 'Rate My Tutor is straight Baby Gronk fumbled-the-bag energy', stars: '☆☆☆☆☆☆'}
 ]
 
 const teamMembers = [
@@ -34,56 +44,48 @@ const teamMembers = [
     name: "Kevin Chen",
     role: "Project Manager",
     image: kevinChen,
-    linkedin: "#",
-    github: "#"
+    github: "https://github.com/Prunuus"
   },
   {
     name: "Licheng Yi",
     role: "Project Manager",
     image: lichengYi,
-    linkedin: "#",
-    github: "#"
+    github: "https://github.com/Hurdamert"
   },
   {
     name: "Long Vo",
     role: "Project Manager",
     image: longVo,
-    linkedin: "#",
     github: "https://github.com/longv1-code"
   },
   {
     name: "Lorenzo Viray",
     role: "Member",
-    image: lichengYi,
-    linkedin: "#",
+    image: lorenzo,
     github: "https://github.com/CrunchyWaterIsNotIce"
   },
   {
     name: "Aldiyar Seidaliyev",
     role: "Member",
-    image: lichengYi,
-    linkedin: "#",
+    image: aldiyar,
     github: "https://github.com/aldiseida"
   },
   {
     name: "Reuben Daniel",
     role: "Member",
-    image: lichengYi,
-    linkedin: "#",
+    image: reuben,
     github: "https://github.com/reubend415"
   },
   {
     name: "Miguel Canales",
     role: "Member",
-    image: lichengYi,
-    linkedin: "#",
+    image: miguel,
     github: "https://github.com/MiguelCan13"
   },
   {
     name: "Erica Tong",
     role: "Member",
-    image: lichengYi,
-    linkedin: "#",
+    image: erica,
     github: "https://github.com/lichtrune"
   },
 ]
@@ -91,8 +93,6 @@ const teamMembers = [
 export default function Home() {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();
-
-
   const handleEnter = async (e) => {
     if (e.key === 'Enter' && searchText.trim()) {
       e.preventDefault(); // Prevents form submission refresh
@@ -108,7 +108,6 @@ export default function Home() {
           const data = await response.json();
           // Store data in sessionStorage instead off passing it via URL
           sessionStorage.setItem('searchResult', JSON.stringify(data));   // I dont think this is needed???????????
-          sessionStorage.setItem('searchText', searchText);
           router.push('/client/results'); // Navigate to results without passing data in the URL
         } else {
           console.error('Failed to post search term:', response.statusText);
@@ -123,10 +122,22 @@ export default function Home() {
     setSearchText(e.target.value);
   };
 
+  // scroll to about section
   const aboutRef = useRef(null);
   const scrollToAbout = () => {
-    aboutRef.current.scrollIntoView({behavior: 'smooth'});
-  }
+    scrollToWithOffset(aboutRef.current, 65);
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const scrollTo = params.get("scrollTo");
+
+    if (scrollTo === "about" && aboutRef.current) {
+      scrollToWithOffset(aboutRef.current, 65);
+      const newURL = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, newURL);
+    }
+  }, []);
 
   return (
     <div style={background}>
@@ -140,34 +151,33 @@ export default function Home() {
             <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
             <div className={styles.buttonContainer}>
-              <button onClick= {scrollToAbout} className={styles.buttons}>
-                About
-              </button>
-              <button className={styles.buttons} onClick={() => router.push('/login')}>
+              <Link href="/about">
+                <button id="about" onClick= {scrollToAbout} className={styles.buttons}>About</button>
+              </Link>
+              <Link href="/login" className={styles.buttons}>
                 Log In
-              </button>
-              <button className={styles.buttons} onClick={() => router.push('/signup')}>
+              </Link>
+              <Link href="/signup" className={`${styles.buttons} ${styles.activeButton}`}>
                 Sign Up
-              </button>
+              </Link>
             </div>
           </div>
           {/* search section */}
-          {/* TODO: add the search bar */}
           <div>
             <div className={styles.searchSection}>
-              <h1 className={styles.helpComments} >Enter your Tutor's name to get started.</h1>
+              <h1 className={styles.helpComments} style={{color: "white"}}>Enter your Tutor's name to get started.</h1>
               <form >
                 <input className={styles.searchbar} name="searchbar" type="text" value={searchText} placeholder="Search" onKeyDown={handleEnter} onChange={handleChange}></input>
               </form>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <h1 style={{paddingRight: "5px"}}>Can't find your tutor?</h1>
-                <Link href="/client/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
+                <Link href="/add_tutor" style={{textDecoration: "underline", color: "black"}}>Click here</Link>
               </div>
             </div>
           </div>
         </div>
 
-        <div ref={aboutRef} className={styles.aboutSection}>
+        <div ref={aboutRef} className={styles.aboutSection} id="about">
           <div className={styles.aboutContent}>
             <h2>Our Mission</h2>
             <p>
@@ -181,31 +191,23 @@ export default function Home() {
 
         <div className={styles.reviewSection} style={{padding: '2rem 0', backgroundColor: '#e83c3c', textAlign: 'center'}}>
           <h2>What do people think of us?</h2>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            gap: '2rem',
-            padding: '2rem',
-          }}>
-            {/* add feature for carousel effect for reviews*/}
-            <div className={styles.reviewTrack}>
-              {reviews.map((review, index) => (
+          <Slider {...{infinite: true, speed: 500, slidesToShow: 3, slidesToScroll: 1, autoplay: true, autoplaySpeed: 1750}} className={styles.reviewSliderContainer}>
+            {reviews.map((review, index) => (
                 <div key={index} style={{color: '#0B1215'}}>
                   <p style={{ fontSize: '1.2rem', fontWeight: 'bold'}}>{review.name}</p>
                   <p>{review.stars}</p>
                   <p>{review.review}</p>
                 </div>
               ))}
-            </div>  
-           </div>
+          </Slider>
+
         </div>
 
         <div className={styles.teamContainer}>
           <div className={styles.teamGrid}>
             {teamMembers.map((member, index) => (
             <div key={index} className={styles.memberCard}>
-              <div className={styles.imageContainer}>
+              <div className={styles.imageContainer}> {/* handles member containers */}
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -214,10 +216,10 @@ export default function Home() {
                   className={styles.profileImage}
                 />
               </div>
-              <h3 className={styles.memberName}>{member.name}</h3>
-              <p className={styles.memberRole}>{member.role}</p>
-              <div className={styles.socialLinks}>
-              {member.linkedin && (
+              <h3 className={styles.memberName}>{member.name}</h3> {/* member name */}
+              <p className={styles.memberRole}>{member.role}</p> {/* member role */}
+              <div className={styles.socialLinks}> {/* member socials */}
+              {member.linkedin && ( 
                 <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                   <FaLinkedin />
                 </a>

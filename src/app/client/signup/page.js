@@ -89,15 +89,15 @@ export default function Signup() { // Renamed from Home to Signup
           </div>
 
           {/* Sign Up Page section */}
-          <div className={styles.signupSection}>
+          <div className={styles.signupContainer}>
             <form onSubmit={handleSubmit} className={styles.signupSection} aria-label="Sign Up Form">
-              <h1 style={{ fontSize: "40px", color: "#000" }}>Enter Your Information to Sign Up</h1>
+              <h1 style={{ fontSize: "40px", color: "#fff" }}>Enter your information to sign up</h1>
               
               {/* Display Success Message */}
-              {success && <strong style={{ color: "#95f0aa", marginBottom: "1rem" }}>{success}</strong>}
+              {success && <strong style={{ color: "#28a745", marginBottom: "1rem" }}>{success}</strong>}
               
               {/* Display Error Message */}
-              {error && <strong style={{ color: "#890f1d", marginBottom: "1rem" }}>{error}</strong>}
+              {error && <strong style={{ color: "#dc3545", marginBottom: "1rem" }}>{error}</strong>}
               
               <input
                 className={styles.signupBar}

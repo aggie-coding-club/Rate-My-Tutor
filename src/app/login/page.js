@@ -87,7 +87,7 @@ export default function Login() { // Renamed to Login
                     {/* Login Page section */}
                     <div className={styles.loginSection}>
                         <form onSubmit={handleSubmit} className={styles.loginSection} aria-label="Login Form">
-                            <h1 style={{ fontSize: "40px", color: "#fff" }}>Welcome Back, Log In to Get Started!</h1>
+                            <h1 style={{ fontSize: "40px", color: "#000" }}>Welcome Back, Log In to Get Started!</h1>
 
                             {/* Display Success Message */}
                             {success && <strong className={styles.loginSuccess}>{success}</strong>}

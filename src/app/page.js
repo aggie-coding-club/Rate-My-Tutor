@@ -1,11 +1,13 @@
 'use client'
 import Image from "next/image";
 import styles from './client/css/home.module.css';
-import RMT from './client/Assets/RMT.png'
 import Link from 'next/link'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import dynamic from 'next/dynamic';
+const Slider = dynamic(() => import('react-slick'), { ssr: false });3
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import React, { useRef } from 'react';
 
 // icons
@@ -26,7 +28,8 @@ const reviews = [
   { name: 'Kevin Chen', review: 'I love the PTs so much, especially Licheng Yi ;)', stars: '★★★★★'},
   { name: 'Licheng Yi', review: 'I\'m one of the PTs for Rate my Tutor and I got to meet up so many wonderful students like Kevin Chen :3', stars: '★★★★★'},
   { name: 'Long Vo', review: 'Why is this just a dating site?', stars: '★☆☆☆☆'},
-  { name: 'Miguel', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'}
+  { name: 'Miguel C', review: 'Brainrot ahh, 7/4 on the freaky scale', stars: '★★★★☆'},
+  { name: 'Lorenzo V', review: 'Rate My Tutor is straight Baby Gronk fumbled-the-bag energy', stars: '☆☆☆☆☆☆'}
 ]
 
 const teamMembers = [
@@ -181,24 +184,16 @@ export default function Home() {
 
         <div className={styles.reviewSection} style={{padding: '2rem 0', backgroundColor: '#e83c3c', textAlign: 'center'}}>
           <h2>What do people think of us?</h2>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            gap: '2rem',
-            padding: '2rem',
-          }}>
-            {/* add feature for carousel effect for reviews*/}
-            <div className={styles.reviewTrack}>
-              {reviews.map((review, index) => (
+          <Slider {...{infinite: true, speed: 500, slidesToShow: 3, slidesToScroll: 1, autoplay: true, autoplaySpeed: 1750}} className={styles.reviewSliderContainer}>
+            {reviews.map((review, index) => (
                 <div key={index} style={{color: '#0B1215'}}>
                   <p style={{ fontSize: '1.2rem', fontWeight: 'bold'}}>{review.name}</p>
                   <p>{review.stars}</p>
                   <p>{review.review}</p>
                 </div>
               ))}
-            </div>  
-           </div>
+          </Slider>
+
         </div>
 
         <div className={styles.teamContainer}>

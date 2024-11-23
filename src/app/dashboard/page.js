@@ -1,9 +1,9 @@
 'use client'
 import Image from "next/image";
-import styles from './client/css/home.module.css';
+import styles from '../client/css/home.module.css';
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from 'next/navigation';
-import { scrollToWithOffset } from './utils/scrollToWithOffset';
+import { scrollToWithOffset } from '../utils/scrollToWithOffset';
 import Link from 'next/link'
 
 // for slider
@@ -16,14 +16,14 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 // team images
-import longVo from '../app/client/Assets/teamImages/long.jpg'
-import kevinChen from '../app/client/Assets/teamImages/kev.jpg'
-import lichengYi from '../app/client/Assets/teamImages/licheng.jpg'
-import erica from '../app/client/Assets/teamImages/erica.jpg'
-import aldiyar from '../app/client/Assets/teamImages/aldiyar.jpg'
-import lorenzo from '../app/client/Assets/teamImages/lorenzo.jpg'
-import miguel from '../app/client/Assets/teamImages/miguel.jpg'
-import reuben from '../app/client/Assets/teamImages/reuben.png'
+import longVo from '../client/Assets/teamImages/long.jpg'
+import kevinChen from '../client/Assets/teamImages/kev.jpg'
+import lichengYi from '../client/Assets/teamImages/licheng.jpg'
+import erica from '../client/Assets/teamImages/erica.jpg'
+import aldiyar from '../client/Assets/teamImages/aldiyar.jpg'
+import lorenzo from '../client/Assets/teamImages/lorenzo.jpg'
+import miguel from '../client/Assets/teamImages/miguel.jpg'
+import reuben from '../client/Assets/teamImages/reuben.png'
 
 const background = {
   background: "white",

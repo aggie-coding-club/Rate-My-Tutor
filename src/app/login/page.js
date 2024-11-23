@@ -78,7 +78,7 @@ export default function Login() { // Renamed to Login
                             <Link href="/login" className={styles.buttons}>
                                 Log In
                             </Link>
-                            <Link href="/signup" className={`${styles.buttons} ${styles.activeButton}`}>
+                            <Link href="../client/signup" className={`${styles.buttons} ${styles.activeButton}`}>
                                 Sign Up
                             </Link>
                         </div>

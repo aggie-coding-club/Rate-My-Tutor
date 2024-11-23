@@ -201,7 +201,6 @@ export default function Home() {
                 </div>
               ))}
           </Slider>
-
         </div>
 
         <div className={styles.teamContainer}>

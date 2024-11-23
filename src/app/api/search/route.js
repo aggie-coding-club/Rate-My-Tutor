@@ -78,7 +78,7 @@ export async function POST(req) {
     //const document2 = await getDatabase(client, "lastName", stringData);
     //const document = await getDatabase(client)
     await client.close();
-
+    
     return NextResponse.json({document}, { status: 200 });
 }
 

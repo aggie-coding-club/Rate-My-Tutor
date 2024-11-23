@@ -54,45 +54,49 @@ export default function Tutor() {
                 {/* Name and rating section */}
 
                 <div className={styles.tutorSection}>
-                    {/* {console.log(tutor)}
-                    {console.log(tutor.firstName)} */}
+                    {console.log(tutor)}
+                    {/*console.log(tutor.firstName)*/} 
                 
-                <div style={{display:'flex', flexDirection:'row',width:"100vw", justifyContent:'space-between', marginTop:"20px"}}>
-                    <div>
-                        <section className={styles.tutorInfo}>
-                            <h1 className={styles.tutorRating}>
-                                {tutor.rating} / 5
-                            </h1>
-                            <h1 className={styles.tutorName}>
-                                {tutor.firstName} {tutor.lastName}  
-                            </h1>
-                        </section>
+                    <div style={{display:'flex', flexDirection:'column',width:"50%",gap:"20px", justifyContent:'space-evenly',  flexWrap: 'wrap'}}>
+                        <div>
+                            <section className={styles.tutorInfo}>
+                                <h1 className={styles.tutorRating}>
+                                    {tutor.rating} / 5
+                                </h1>
+                                <h1 className={styles.tutorName}>
+                                    {tutor.firstName} {tutor.lastName}  
+                                </h1>
+                            </section>
 
-                        {/* tag section */}
-                        <section>
-                            <h1 className={styles.tutorSubjects}>
-                                subjects: subjects goes here
-                            </h1>
-                        </section>
-                        {/* other misc */}
-                        <section>
-                            <h1>69% would take again</h1>
-                            <h1>top tags</h1> 
+                            {/* tag section */}
+                            <section>
+                                <h1 className={styles.tutorSubjects}>
+                                    subjects: subjects goes here
+                                </h1>
+                            </section>
+                        </div>
+                        {/* rating distribution */}
+                        <section className={styles.ratingDist}>
+                            <h1 style={{fontSize: 20, fontWeight:"bold"}}>Rating Distribution</h1>
+                            <h1 style={{fontSize: 20}}>1</h1>
+                            <h1 style={{fontSize: 20}}>2</h1>
+                            <h1 style={{fontSize: 20}}>3</h1>
+                            <h1 style={{fontSize: 20}}>4</h1>
+                            <h1 style={{fontSize: 20}}>5</h1>
                         </section>
                     </div>
-                    {/* rating distribution */}
-                    <section className={styles.ratingDist}>
-                        <h1 style={{fontSize: 20, fontWeight:"bold"}}>Rating Distribution</h1>
-                        <h1 style={{fontSize: 20}}>1</h1>
-                        <h1 style={{fontSize: 20}}>2</h1>
-                        <h1 style={{fontSize: 20}}>3</h1>
-                        <h1 style={{fontSize: 20}}>4</h1>
-                        <h1 style={{fontSize: 20}}>5</h1>
-                    </section>
-                </div>
-                
 
-                
+                    {/* section for comments */}
+                    <div className={styles.tutorComments}>
+                        {tutor.comments.map((comment)=> (
+                            <div className={styles.comments}>
+                                <p>
+                                    {console.log(comment)}
+                                    {comment}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 </div>

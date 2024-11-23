@@ -154,15 +154,13 @@ export default function Home() {
             <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
             <div className={styles.buttonContainer}>
-              <button onClick= {scrollToAbout} className={styles.buttons}>
-                About
-              </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
-                Tutors
-              </button>
-              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
-                Sign out
-              </button>
+              <button id="about" onClick= {scrollToAbout} className={styles.buttons}>About</button>
+              <Link href="/login" className={styles.buttons}>
+                Log In
+              </Link>
+              <Link href="/client/signup" className={`${styles.buttons} ${styles.activeButton}`}>
+                Sign Up
+              </Link>
             </div>
           </div>
           {/* search section */}

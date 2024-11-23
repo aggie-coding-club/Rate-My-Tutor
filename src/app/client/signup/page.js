@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '../client/css/home.module.css';
+import styles from '../css/home.module.css';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';

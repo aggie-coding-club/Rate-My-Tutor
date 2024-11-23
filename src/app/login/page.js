@@ -72,13 +72,13 @@ export default function Login() { // Renamed to Login
                         <Link href="/" className={styles.logo} aria-label="Rate My Tutor Home"></Link>
                         {/* Navigation Buttons */}
                         <div className={styles.buttonContainer}>
-                            <Link href="/#about" className={styles.buttons}>
-                                About
+                            <Link href="/?scrollTo=about">
+                                <button className={styles.buttons}>About</button>
                             </Link>
-                            <Link href="/login" className={`${styles.buttons} ${styles.activeButton}`}>
+                            <Link href="/login" className={styles.buttons}>
                                 Log In
                             </Link>
-                            <Link href="/signup" className={styles.buttons}>
+                            <Link href="/signup" className={`${styles.buttons} ${styles.activeButton}`}>
                                 Sign Up
                             </Link>
                         </div>

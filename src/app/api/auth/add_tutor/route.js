@@ -1,3 +1,4 @@
+import { FaComments } from 'react-icons/fa';
 import clientPromise from '../../../server/server';
 
 export async function POST(request) {
@@ -22,6 +23,7 @@ export async function POST(request) {
       rating,
       subject,
       createdAt: new Date(),
+      FaComments: []
     });
 
     return new Response(JSON.stringify({ message: 'Tutor added successfully.' }), {

@@ -154,15 +154,15 @@ export default function Home() {
             <Link href="/" className={styles.logo}></Link>
             {/* for buttons */}
             <div className={styles.buttonContainer}>
-              <Link href="/about">
-                <button id="about" onClick= {scrollToAbout} className={styles.buttons}>About</button>
-              </Link>
-              <Link href="/login" className={styles.buttons}>
-                Log In
-              </Link>
-              <Link href="/signup" className={`${styles.buttons} ${styles.activeButton}`}>
-                Sign Up
-              </Link>
+              <button onClick= {scrollToAbout} className={styles.buttons}>
+                About
+              </button>
+              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
+                Tutors
+              </button>
+              <button className={styles.buttons} onClick={() => router.push('/dashboard')}>
+                Sign out
+              </button>
             </div>
           </div>
           {/* search section */}
@@ -203,7 +203,6 @@ export default function Home() {
                 </div>
               ))}
           </Slider>
-
         </div>
 
         <div className={styles.teamContainer}>

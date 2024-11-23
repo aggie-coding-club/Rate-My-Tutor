@@ -149,7 +149,7 @@ export default function Signup() { // Renamed from Home to Signup
                 required
                 aria-label="Password"
               />
-              <button type="submit" className={styles.submitInfoButton}>
+              <button type="submit" className={styles.submitButton}>
                 Continue
               </button>
             </form>

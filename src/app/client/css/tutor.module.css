@@ -19,7 +19,7 @@
     justify-content: flex-end;
     align-items: center;
     position: fixed;
-    top: 0;
+    margin: 0;
 }
 
 .buttonContainer {
@@ -48,6 +48,8 @@
     width: 100vw;
     margin-top: 100px;
     margin-left: 25px;
+    display: flex;
+    flex-direction: row;
 }
 
 .tutorInfo {
@@ -60,12 +62,13 @@
 .tutorName {
     font-size: 50px;
     display: inline-block;
+    text-transform: capitalize;
 
 }
 .tutorRating {
     font-size: 48px;
     display: flex;
-    margin-top: 20px;
+
 
 }
 
@@ -75,9 +78,28 @@
 
 }
 
+.tutorComments {
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    gap: 10px;
+}
+
+.comments {
+    width: 100%;
+    background-color: rgb(232, 232, 232);
+    color: #2C2C2C;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
 .ratingDist {
-    width: 50%;
-    height: 60vh;
+    width: 500px;
+    height: 50vh;
     border: 1px solid #2C2C2C ;
     background-color: rgb(232, 232, 232);
     color: black;
@@ -100,7 +122,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    bottom: 0;
+    margin: 0;
 }
 
 .socials{
